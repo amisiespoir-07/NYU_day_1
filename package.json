@@ -1,0 +1,11 @@
+{
+  "name": "ai-news-assistant",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.1"
+  }
+}

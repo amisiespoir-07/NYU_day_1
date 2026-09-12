@@ -3,14 +3,43 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AI News Assistant</title>
+    <meta name="description" content="Follow current AI reporting from three trusted news sources.">
+    <title>AI News Briefing</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <main>
-      <p class="label">Deployment smoke test</p>
-      <h1>Breaking News: Your Website Exists.</h1>
-      <p>Codex → GitHub → Vercel: <strong>ALIVE</strong></p>
+    <a class="skip-link" href="#main-content">Skip to news</a>
+    <header class="hero">
+      <p class="eyebrow">AI News Assistant</p>
+      <h1>AI News Briefing</h1>
+      <p>One radar for the AI stories shaping what comes next.</p>
+    </header>
+
+    <main id="main-content">
+      <section aria-labelledby="radar-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Live discovery</p>
+            <h2 id="radar-title">News Radar</h2>
+          </div>
+          <span class="method">Powered by RSS</span>
+        </div>
+
+        <div class="controls">
+          <button id="load-news" type="button">Load Latest News</button>
+          <label>
+            Filter loaded stories
+            <input id="filter" type="search" placeholder="Try “agents” or “chips”" disabled>
+          </label>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite">Choose “Load Latest News” to begin.</p>
+        <p id="warnings" class="warning" role="status" hidden></p>
+        <article id="deep-read" class="deep-read" aria-live="polite" hidden></article>
+        <div id="articles" class="articles"></div>
+      </section>
     </main>
   </body>
 </html>
