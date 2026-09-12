@@ -40,6 +40,29 @@
         <article id="deep-read" class="deep-read" aria-live="polite" hidden></article>
         <div id="articles" class="articles"></div>
       </section>
+
+      <section class="explorer" aria-labelledby="explorer-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Direct retrieval</p>
+            <h2 id="explorer-title">Explore Any Web Page</h2>
+          </div>
+          <span class="method">Powered by Firecrawl</span>
+        </div>
+        <p class="section-intro">Paste one public webpage URL to retrieve its main readable content.</p>
+
+        <form id="explorer-form" class="controls">
+          <label for="explorer-url">
+            Page URL
+            <input id="explorer-url" name="url" type="url" placeholder="https://example.com/article" aria-describedby="explorer-help explorer-message" required>
+            <small id="explorer-help">Use one public http:// or https:// page.</small>
+          </label>
+          <button id="scrape-page" type="submit">Scrape Page</button>
+        </form>
+
+        <p id="explorer-message" class="status" role="status" aria-live="polite">No page retrieved yet.</p>
+        <article id="explorer-result" class="deep-read explorer-result" aria-live="polite" hidden></article>
+      </section>
     </main>
   </body>
 </html>

@@ -4,6 +4,11 @@ const status = document.querySelector("#status");
 const warnings = document.querySelector("#warnings");
 const articlesContainer = document.querySelector("#articles");
 const deepReadPanel = document.querySelector("#deep-read");
+const explorerForm = document.querySelector("#explorer-form");
+const explorerInput = document.querySelector("#explorer-url");
+const explorerButton = document.querySelector("#scrape-page");
+const explorerMessage = document.querySelector("#explorer-message");
+const explorerResult = document.querySelector("#explorer-result");
 
 let articles = [];
 
@@ -127,5 +132,48 @@ async function loadDeepRead(article, button) {
   }
 }
 
+async function scrapePage(event) {
+  event.preventDefault();
+  explorerButton.disabled = true;
+  explorerButton.setAttribute("aria-busy", "true");
+  explorerButton.textContent = "Scraping…";
+  explorerResult.hidden = true;
+  explorerMessage.className = "status";
+  explorerMessage.textContent = "Firecrawl is retrieving this one page…";
+
+  try {
+    const response = await fetch("/api/scrape", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: explorerInput.value.trim() }),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "The page could not be scraped.");
+
+    const original = element("a", "Open Original Page", "button-link");
+    original.href = data.url;
+    original.target = "_blank";
+    original.rel = "noopener noreferrer";
+    explorerResult.replaceChildren(
+      element("p", `Firecrawl · ${data.domain}`, "eyebrow"),
+      element("h3", data.title),
+      element("p", data.url, "result-url"),
+      element("p", data.description || "No page description available.", "summary"),
+      element("p", data.content || "No readable content was returned.", "deep-content"),
+      original,
+    );
+    explorerResult.hidden = false;
+    explorerMessage.textContent = "Page retrieved successfully.";
+  } catch (error) {
+    explorerMessage.className = "warning";
+    explorerMessage.textContent = `${error.message} Check the URL and try again.`;
+  } finally {
+    explorerButton.disabled = false;
+    explorerButton.removeAttribute("aria-busy");
+    explorerButton.textContent = "Scrape Page";
+  }
+}
+
 loadButton.addEventListener("click", loadNews);
 filterInput.addEventListener("input", renderArticles);
+explorerForm.addEventListener("submit", scrapePage);

@@ -120,6 +120,11 @@ label {
   font-weight: 700;
 }
 
+small {
+  color: #64748b;
+  font-weight: 400;
+}
+
 button,
 input,
 .button-link {
@@ -259,6 +264,28 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   margin-top: 0.5rem;
+}
+
+.explorer {
+  margin-top: 4rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid #cbd5e1;
+}
+
+.section-intro {
+  max-width: 60ch;
+  margin: 1rem 0 0;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.explorer-result {
+  border-top-color: #1e40af;
+}
+
+.result-url {
+  color: #475569;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 38rem) {
