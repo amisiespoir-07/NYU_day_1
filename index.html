@@ -13,22 +13,36 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to news</a>
     <header class="hero">
-      <p class="eyebrow">AI News Assistant</p>
-      <h1 class="hero-title">AI News Briefing</h1>
-      <p class="hero-support">One radar for the AI stories shaping what comes next.</p>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker hero-step">Your live intelligence desk</p>
+          <h1 class="hero-title hero-step">AI News<br>Briefing</h1>
+          <p class="hero-support hero-step">Track the reporting, inspect the source, and move from signal to context without losing the thread.</p>
+        </div>
+        <aside class="hero-index hero-step" aria-label="Briefing capabilities">
+          <p>Three ways in</p>
+          <ol>
+            <li><span>01</span> Scan the news</li>
+            <li><span>02</span> Read the source</li>
+            <li><span>03</span> Compare openings</li>
+          </ol>
+        </aside>
+      </div>
     </header>
 
     <main id="main-content">
-      <section aria-labelledby="radar-title">
+      <section class="workspace-section radar reveal" aria-labelledby="radar-title">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">Live discovery</p>
+          <span class="section-number" aria-hidden="true">01</span>
+          <div class="section-title">
+            <p class="kicker">Live discovery</p>
             <h2 id="radar-title">News Radar</h2>
+            <p>Current AI reporting from three trusted feeds, ready when you are.</p>
           </div>
           <span class="method">Powered by RSS</span>
         </div>
 
-        <div class="controls hero-control">
+        <div class="controls">
           <button id="load-news" type="button">Load Latest News</button>
           <label>
             Filter loaded stories
@@ -39,18 +53,58 @@
         <p id="status" class="status" role="status" aria-live="polite">Choose “Load Latest News” to begin.</p>
         <p id="warnings" class="warning" role="status" hidden></p>
         <article id="deep-read" class="deep-read" aria-live="polite" hidden></article>
-        <div id="articles" class="articles"></div>
+        <div id="articles" class="articles results"></div>
       </section>
 
-      <section class="explorer reveal" aria-labelledby="explorer-title">
+      <section class="workspace-section gallery reveal" aria-labelledby="gallery-title">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">Direct retrieval</p>
+          <span class="section-number" aria-hidden="true">02</span>
+          <div class="section-title">
+            <p class="kicker">One desk, three lenses</p>
+            <h2 id="gallery-title">Follow the signal</h2>
+            <p>Move through the briefing workflow one focused view at a time.</p>
+          </div>
+          <span class="method">Workflow</span>
+        </div>
+
+        <div class="carousel">
+          <div class="carousel-controls">
+            <button class="carousel-prev" type="button" aria-label="Show previous workflow view">Previous</button>
+            <button class="carousel-next" type="button" aria-label="Show next workflow view">Next</button>
+          </div>
+          <div class="track" tabindex="0" role="region" aria-label="AI News Briefing workflow gallery">
+            <article class="slide">
+              <div class="slide-visual signal-map" aria-hidden="true"><span></span><span></span><span></span></div>
+              <p class="slide-count">01 / Radar</p>
+              <h3>See what is moving now.</h3>
+              <p>Load a clean cross-source scan, then filter the signal without starting over.</p>
+            </article>
+            <article class="slide">
+              <div class="slide-visual reading-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <p class="slide-count">02 / Deep read</p>
+              <h3>Stay close to the source.</h3>
+              <p>Pull the readable page into one calm view while keeping the original a click away.</p>
+            </article>
+            <article class="slide">
+              <div class="slide-visual opportunity-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <p class="slide-count">03 / Scout</p>
+              <h3>Compare the next move.</h3>
+              <p>Turn public job pages into a short, evidence-led list of early-career openings.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace-section explorer reveal" aria-labelledby="explorer-title">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">03</span>
+          <div class="section-title">
+            <p class="kicker">Direct retrieval</p>
             <h2 id="explorer-title">Explore Any Web Page</h2>
+            <p>Bring one public page into focus without the surrounding noise.</p>
           </div>
           <span class="method">Powered by Firecrawl</span>
         </div>
-        <p class="section-intro">Paste one public webpage URL to retrieve its main readable content.</p>
 
         <form id="explorer-form" class="controls">
           <label for="explorer-url">
@@ -65,15 +119,18 @@
         <article id="explorer-result" class="deep-read explorer-result" aria-live="polite" hidden></article>
       </section>
 
-      <section class="explorer reveal" aria-labelledby="jobs-title">
+      <section class="workspace-section explorer jobs reveal" aria-labelledby="jobs-title">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">Compare opportunities</p>
+          <span class="section-number" aria-hidden="true">04</span>
+          <div class="section-title">
+            <p class="kicker">Compare opportunities</p>
             <h2 id="jobs-title">Junior Job Scout</h2>
+            <p>Compare public listings and surface promising early-career roles.</p>
           </div>
           <span class="method">Firecrawl comparison</span>
         </div>
-        <p class="section-intro">Paste up to 5 public job-listing pages. We will compare visible roles and surface promising early-career opportunities. Results are general, not personalized career advice.</p>
+
+        <p class="section-intro">Paste up to 5 public job-listing pages. Results are general, not personalized career advice.</p>
 
         <form id="jobs-form" class="controls job-scout-form">
           <div class="job-fields">
