@@ -8,13 +8,14 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="motion.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to news</a>
     <header class="hero">
       <p class="eyebrow">AI News Assistant</p>
-      <h1>AI News Briefing</h1>
-      <p>One radar for the AI stories shaping what comes next.</p>
+      <h1 class="hero-title">AI News Briefing</h1>
+      <p class="hero-support">One radar for the AI stories shaping what comes next.</p>
     </header>
 
     <main id="main-content">
@@ -27,7 +28,7 @@
           <span class="method">Powered by RSS</span>
         </div>
 
-        <div class="controls">
+        <div class="controls hero-control">
           <button id="load-news" type="button">Load Latest News</button>
           <label>
             Filter loaded stories
@@ -41,7 +42,7 @@
         <div id="articles" class="articles"></div>
       </section>
 
-      <section class="explorer" aria-labelledby="explorer-title">
+      <section class="explorer reveal" aria-labelledby="explorer-title">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Direct retrieval</p>
@@ -62,6 +63,49 @@
 
         <p id="explorer-message" class="status" role="status" aria-live="polite">No page retrieved yet.</p>
         <article id="explorer-result" class="deep-read explorer-result" aria-live="polite" hidden></article>
+      </section>
+
+      <section class="explorer reveal" aria-labelledby="jobs-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Compare opportunities</p>
+            <h2 id="jobs-title">Junior Job Scout</h2>
+          </div>
+          <span class="method">Firecrawl comparison</span>
+        </div>
+        <p class="section-intro">Paste up to 5 public job-listing pages. We will compare visible roles and surface promising early-career opportunities. Results are general, not personalized career advice.</p>
+
+        <form id="jobs-form" class="controls job-scout-form">
+          <div class="job-fields">
+            <label for="job-url-1">Job Source 1 URL
+              <input id="job-url-1" name="job-url" type="url" placeholder="https://publicjobs.example/search" required>
+              <small class="source-status">Waiting</small>
+            </label>
+            <label for="job-url-2">Job Source 2 URL
+              <input id="job-url-2" name="job-url" type="url">
+              <small class="source-status">Waiting</small>
+            </label>
+            <label for="job-url-3">Job Source 3 URL
+              <input id="job-url-3" name="job-url" type="url">
+              <small class="source-status">Waiting</small>
+            </label>
+            <label for="job-url-4">Job Source 4 URL
+              <input id="job-url-4" name="job-url" type="url">
+              <small class="source-status">Waiting</small>
+            </label>
+            <label for="job-url-5">Job Source 5 URL
+              <input id="job-url-5" name="job-url" type="url">
+              <small class="source-status">Waiting</small>
+            </label>
+          </div>
+          <button id="scan-jobs" type="submit">Find Junior Opportunities</button>
+        </form>
+
+        <p id="jobs-message" class="status" role="status" aria-live="polite">Add at least one public job page to begin.</p>
+        <section id="jobs-result" class="jobs-result" aria-labelledby="jobs-result-title" hidden>
+          <h3 id="jobs-result-title">Top 5 Junior Opportunities</h3>
+          <div id="job-cards" class="job-cards"></div>
+        </section>
       </section>
     </main>
   </body>
